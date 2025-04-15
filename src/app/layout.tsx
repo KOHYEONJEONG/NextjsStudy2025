@@ -1,15 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = localFont({
+  src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
 });
-
-const geistMono = Geist_Mono({
+const geistMono = localFont({
+  src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -24,9 +23,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* 중괄호 children이라고 해서 이런 레이아웃 안쪽으로 페이지 컴포넌트들을 렌더링 함. */}
-      {/* 레이아웃 안에 페이지가 어디에 위치할 건지를 설정 */}
-      <body>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        {/* 중괄호 children이라고 해서 이런 레이아웃 안쪽으로 페이지 컴포넌트들을 렌더링 함. */}
+        {/* 레이아웃 안에 페이지가 어디에 위치할 건지를 설정 */}
+        {children}
+      </body>
     </html>
   );
 }

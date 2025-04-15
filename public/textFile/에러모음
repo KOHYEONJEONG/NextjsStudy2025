@@ -1,0 +1,4 @@
+1.  Error: × You're importing a component that needs `useEffect`. This React hook only works in a client component. To fix, mark the file (or its parent) with the `"use client"` directive.
+    ㄴ useEffect는 브라우저에서만 실행되기 때문에 서버 컴포넌트 안에서 실행 시 위와같은 에러가 출력된다.
+    ㄴ To fix : 이 문제를 고치고 싶다면~
+    ㄴ 해당 컴포넌트를 클라이언트 컴포넌트로 변경해라 -> "use client";를 상단에 붙이면 됨.
