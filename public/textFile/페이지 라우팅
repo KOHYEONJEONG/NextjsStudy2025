@@ -1,0 +1,5 @@
+/serach 페이지 구성
+ㄴ layout.tsx
+ㄴ page.tsx
+
+layout.tsx가 page.tsx를 감싼다.

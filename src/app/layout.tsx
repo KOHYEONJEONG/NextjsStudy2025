@@ -24,9 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
+      {/* 중괄호 children이라고 해서 이런 레이아웃 안쪽으로 페이지 컴포넌트들을 렌더링 함. */}
+      {/* 레이아웃 안에 페이지가 어디에 위치할 건지를 설정 */}
+      <body>{children}</body>
     </html>
   );
 }
