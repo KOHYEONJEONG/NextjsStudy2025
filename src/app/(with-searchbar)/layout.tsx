@@ -1,10 +1,7 @@
-import React, { ReactNode } from "react";
-import Searchbar from "../components/searchbar";
-function Layout({
-  children,
-}: {
-  children: ReactNode; //children은 Node타입이다.
-}) {
+import { ReactNode, Suspense } from "react";
+import Searchbar from "../../components/searchbar";
+
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div>
       <Searchbar />
@@ -12,5 +9,3 @@ function Layout({
     </div>
   );
 }
-
-export default Layout;
