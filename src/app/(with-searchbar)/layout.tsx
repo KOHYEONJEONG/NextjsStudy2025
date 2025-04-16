@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import Searchbar from "./searchbar";
+import Searchbar from "../components/searchbar";
 function Layout({
   children,
 }: {

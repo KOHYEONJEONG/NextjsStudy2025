@@ -1,5 +1,3 @@
-// import styles from "./page.module.css";
-// import ClientComponent from "./search/clientComponent";
 // export default function Home() {
 //   //console.log("Home 컴포넌트 실행"); //서버에서만 실행(브라우저 콘솔창에는 한 번만 뜸, 서버 콘솔창만 여러번 뜸.)
 
@@ -12,8 +10,8 @@
 // }
 
 import styles from "./page.module.css";
-import ClientComponent from "./search/clientComponent";
-import ServerComponent from "./search/serverComponent";
+import ClientComponent from "../components/clientComponent";
+import ServerComponent from "../components/serverComponent";
 
 export default function Home() {
   //console.log("Home 컴포넌트 실행"); //서버에서만 실행(브라우저 콘솔창에는 한 번만 뜸, 서버 콘솔창만 여러번 뜸.)
