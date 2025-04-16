@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-
+import Searchbar from "./searchbar";
 function Layout({
   children,
 }: {
@@ -7,7 +7,7 @@ function Layout({
 }) {
   return (
     <div>
-      <div>임시 서치바</div>
+      <Searchbar />
       {children}
     </div>
   );

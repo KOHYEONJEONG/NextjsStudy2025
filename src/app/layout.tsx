@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-
+import Link from "next/link";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -23,7 +23,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}> */}
+      <body>
+        <header>
+          {/* 페이지 이동 */}
+          <Link href={"/"}>index</Link>&nbsp;
+          <Link href={"/search"}>search</Link>&nbsp;
+          <Link href={"/book/1"}>book/1</Link>
+        </header>
         {/* 중괄호 children이라고 해서 이런 레이아웃 안쪽으로 페이지 컴포넌트들을 렌더링 함. */}
         {/* 레이아웃 안에 페이지가 어디에 위치할 건지를 설정 */}
         {children}

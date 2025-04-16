@@ -16,5 +16,4 @@ export default function Searchbar() {
       <button>검색</button>
     </div>
   );
-  return;
 }
