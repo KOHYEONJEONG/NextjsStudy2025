@@ -12,8 +12,14 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-export default function Page({ params }: { params: Promise<{ id: string | string[] }> }) {
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } = mockData;
+export default function Page({
+  params,
+}: {
+  params: Promise<{ id: string | string[] }>;
+}) {
+  //하나의 도서의 데이터를 객체형태로 보관
+  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+    mockData;
 
   return (
     <div className={style.container}>
@@ -21,6 +27,7 @@ export default function Page({ params }: { params: Promise<{ id: string | string
         className={style.cover_img_container}
         style={{ backgroundImage: `url('${coverImgUrl}')` }}
       >
+        {/* 도서 커버 이미지 */}
         <img src={coverImgUrl} />
       </div>
       <div className={style.title}>{title}</div>

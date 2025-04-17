@@ -12,7 +12,9 @@ export default function BookItem({
   coverImgUrl,
 }: BookData) {
   return (
+    // 해당 도서에 상세페이지지로 가는 id 넣어주기
     <Link href={`/book/${id}`} className={style.container}>
+      {/* 각종 도서의 정보를 표가해줌 */}
       <img src={coverImgUrl} />
       <div>
         <div className={style.title}>{title}</div>

@@ -11,6 +11,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className={style.container}>
+          {/* 시맨틱 태그 */}
           <header>
             <Link href={"/"}>📚 ONEBITE BOOKS</Link>
           </header>
