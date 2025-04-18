@@ -21,6 +21,8 @@ export default function Searchbar() {
 
   const onSubmit = () => {
     if (!search || q === search) return; //검색어가 변경되지 않았으면 추가적인 검색 작업이 불필요하여 예외처리
+
+    // \search\page.tsx 실행
     router.push(`/search?q=${search}`);
   };
 
