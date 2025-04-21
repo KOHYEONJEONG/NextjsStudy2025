@@ -2,8 +2,13 @@ import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 
+/**
+ * async 키워드
+ * ㄴ 리액트의 서버 컴포넌트이기 때문에 비동기적으로 실행되어도 문제가 없다.
+ *
+ */
 export default async function Page({
-  searchParams,
+  searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
 }: {
   searchParams: Promise<{
     q?: string;

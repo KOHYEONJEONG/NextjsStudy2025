@@ -17,7 +17,7 @@ async function AllBook() {
 
   return (
     <div>
-      {books.map((book) => (
+      {allBook.map((book) => (
         <BookItem key={book.id} {...book} />
       ))}
     </div>

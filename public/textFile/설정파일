@@ -1,0 +1,13 @@
+next.config.mjs 파일
+
+- 넥스트 앱의 옵션들을 설정해주는 파일
+
+tsconfig.json
+
+- 타입스크립트 활용중
+
+app폴더
+
+- App라우터를 사용중이기 때문
+  ㄴ page
+  ㄴ layout

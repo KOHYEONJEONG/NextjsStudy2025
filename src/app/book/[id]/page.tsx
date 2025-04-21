@@ -12,6 +12,15 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
+// book\[id]
+// 한개의 url 파라미터만 허용한다.(ex) book\1\2 은 안된다!)
+// http://localhost:3000/book/1
+
+//[...id]이면 한개이상의 파라미터도 허용한다.
+// ex( ttp://localhost:3000/book/1/2)
+// 단 url 파라미터가 한개도 없으면 404 에러
+// *[[...id]] 이렇게 사용하면 없어도 에러 안남
+
 export default function Page({
   params,
 }: {
