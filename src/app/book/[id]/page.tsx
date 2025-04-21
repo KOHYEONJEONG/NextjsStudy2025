@@ -21,14 +21,24 @@ const mockData = {
 // 단 url 파라미터가 한개도 없으면 404 에러
 // *[[...id]] 이렇게 사용하면 없어도 에러 안남
 
-export default function Page({
+export default async function Page({
   params,
 }: {
   params: Promise<{ id: string | string[] }>;
 }) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+  );
+  //예외처리 필수
+  if (!response.ok) {
+    return <div>오류가 발생했습니다...</div>;
+  }
+
+  const book = await response.json();
+
   //하나의 도서의 데이터를 객체형태로 보관
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+    book;
 
   return (
     <div className={style.container}>

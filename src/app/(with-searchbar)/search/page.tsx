@@ -17,14 +17,15 @@ export default async function Page({
   const { q } = await searchParams;
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}` //p는 props의 searchParams
   );
 
+  //예외처리 필수
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
   }
 
-  const books: BookData[] = await response.json();
+  const books: BookData[] = await response.json(); //타입 : BookData[]
   console.log("검색 =>> ", books);
   return (
     <div>

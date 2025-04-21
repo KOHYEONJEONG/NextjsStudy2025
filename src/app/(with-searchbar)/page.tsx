@@ -35,7 +35,7 @@ async function RecoBooks() {
     return <div>오류가 발생했습니다...</div>;
   }
 
-  const recoBooks: BookData[] = await response.json(); //타입 지정
+  const recoBooks: BookData[] = await response.json(); //타입 : BookData[]
 
   console.log("랜덤 => ", recoBooks);
 
