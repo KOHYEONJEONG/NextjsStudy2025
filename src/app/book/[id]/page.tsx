@@ -12,22 +12,26 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
+
+// book\[id]
+// 한개의 url 파라미터만 허용한다.(ex) book\1\2 은 안된다!)
+// http://localhost:3000/book/1
+
+//[...id]이면 한개이상의 파라미터도 허용한다.
+// ex( ttp://localhost:3000/book/1/2)
+// 단 url 파라미터가 한개도 없으면 404 에러
+// *[[...id]] 이렇게 사용하면 없어도 에러 안남
+
 export default async function Page({
-  //서버 컴포넌트를 async 키워드를 붙여서 비동기 함수로 만들어서 해당 컴포넌트 내부에서 데이터를 직접 패칭해 올 수 있다는 중요한 사실.
   params,
 }: {
   params: { id: string | string[] };
 }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
-  );
-
-=======
     // `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
   );
   //예외처리 필수
->>>>>>> 7496dc5da619df377db2eb56f822c7bb0306b4a7
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
   }
