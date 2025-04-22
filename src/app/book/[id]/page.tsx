@@ -22,6 +22,12 @@ export default async function Page({
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
   );
 
+=======
+    // `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
+  );
+  //예외처리 필수
+>>>>>>> 7496dc5da619df377db2eb56f822c7bb0306b4a7
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
   }

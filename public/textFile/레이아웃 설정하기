@@ -1,10 +1,14 @@
 
-app
+page라는 이름의 파일이 
+페이지 역할을 하는 파일로 자동 설정된다.
+
+# App 라우터의 레이아웃 설정
+app(폴더)
 ㄴ search(폴더)
-    ㄴ 🍒layout.tsx : "/search" 경로로 시작하는 모든 페이지의 레이아웃으로 적용됨.
+    ㄴ 🍒layout.tsx : "/search" 경로로 시작하는 모든 Page의 레이아웃으로 적용됨.
     ㄴ setting(폴더)
         ㄴ 🍒layout.tsx : 상위 layout.tsx 안에 layout.tsx로 중첩됨.
-        ㄴ page.tsx : 중첩된 layout.tsx 안에 들어감.
+        ㄴ page.tsx : 중첩된 layout.tsx 안에 마지막(맨 안쪽)으로 page컴포넌트가 들어감.
 
 
 다시 말하면

@@ -1,0 +1,15 @@
+Nextjs(v15)
+⏬App Router
+
+- React 18신규 기능 추가
+- 데이터 패칭 방식 변경
+- 레이아웃 설정 방식 변경
+- 페이지 라우팅 설정 방식 변경
+ ㄴ ex) 참고 : (with-searchbar)\page.tsx
+
+⏬페이지 라우터와 크게 변경되지 않은 사항
+
+- 네비게이팅(Navigating)
+- 프리패칭(Pre-Fetching)
+- 사전 렌더링(Pre-Rendering)
+

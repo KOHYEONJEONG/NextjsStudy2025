@@ -1,0 +1,36 @@
+
+// 페이지 파일
+
+1. SSR (서버 사이드 렌더링)
+export async function getServerSideProps() {
+    return {props: {...}}
+}
+
+2. SSR(정적 사이트 생성)
+export async function getStaticProps() {
+    return {props:{...}}
+}
+
+3. Dynamic SSG(동적 경로에 대한 정적 사이트 생성)
+export async function getStaticPaths(){
+    return {paths: [...], callback:...}
+}
+
+오직 서버측에서만 사용되는 함수 
+
+------------------------------------------------------
+
+클라이언트 컴포넌트에는 async 키워드를 사용할 수 없었음.
+: 브라우저에서 동작시 문제를 일으킬 수 있기 때문에 권장하지 않음.
+
+비동기 함수로 설정할 수 없었다.
+
+그런데
+
+서버 컴포넌트에서는 비동기함수로 사용할 수 있다.
+export default async function Page(props){
+    const data = await fetch('...');
+    return <div>...</div>;
+}
+
+----------------------------
