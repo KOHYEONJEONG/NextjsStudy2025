@@ -12,14 +12,25 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-export default function Page({
+export default async function Page({
+  //서버 컴포넌트를 async 키워드를 붙여서 비동기 함수로 만들어서 해당 컴포넌트 내부에서 데이터를 직접 패칭해 올 수 있다는 중요한 사실.
   params,
 }: {
-  params: Promise<{ id: string | string[] }>;
+  params: { id: string | string[] };
 }) {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+  );
+
+  if (!response.ok) {
+    return <div>오류가 발생했습니다...</div>;
+  }
+
+  const book = await response.json();
+
   //하나의 도서의 데이터를 객체형태로 보관
   const { id, title, subTitle, description, author, publisher, coverImgUrl } =
-    mockData;
+    book;
 
   return (
     <div className={style.container}>

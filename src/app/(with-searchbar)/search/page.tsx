@@ -19,7 +19,7 @@ export default async function Page({
     return <div>오류가 발생했습니다...</div>;
   }
 
-  const books: BookData[] = await response.json();
+  const books: BookData[] = await response.json(); 
   console.log("검색 =>> ", books);
   return (
     <div>
