@@ -2,11 +2,14 @@ import BookItem from "@/components/book-item";
 import style from "./page.module.css";
 import books from "@/mock/books.json";
 import { BookData } from "@/types";
-
+/**
+ * 메인화면(인덱스) 페이지
+ */
 async function AllBook() {
   //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정보를 지정해줘야한다.
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
+    { cache: "no-store" }
   );
 
   //예외처리 필수

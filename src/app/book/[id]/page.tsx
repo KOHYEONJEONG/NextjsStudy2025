@@ -27,7 +27,8 @@ export default async function Page({
   params: Promise<{ id: string | string[] }>;
 }) {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${params.id}`
+    // `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
   );
   //예외처리 필수
   if (!response.ok) {
