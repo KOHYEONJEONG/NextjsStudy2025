@@ -1,10 +1,12 @@
-"use client";
+"use client"; //클라이언트 컴포넌트
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; //App 라우터를 사용하기에 next/navigation로 import해주기
 import style from "./serachbar.module.css";
 
 export default function Searchbar() {
+  console.log("Searchbar 렌더링");
+  //사용자 입력이 필요한 상호작용(입력이나 이벤트)이 필요한 컴포넌트.
   const router = useRouter();
   const searchParams = useSearchParams(); //nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
   const [search, setSearch] = useState("");
