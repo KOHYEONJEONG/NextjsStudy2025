@@ -14,7 +14,17 @@ export default function Searchbar() {
   const q = searchParams.get("q");
 
   useEffect(() => {
-    setSearch(q || "");
+    setSearch(q || ""); //q가 falsy 값(거짓으로 평가되는 값)이면 ""(빈 문자열)을 반환
+    /**
+     * falsy 값이란:
+     * null
+     * undefined
+     * "" (빈 문자열)
+     * 0
+     * NaN
+    false
+ */
+    
   }, [q]); //쿼리스트링 q의 값이 변할 때마다 setSearch 함수를 호출해서 SearchState의 값을 현재의 쿼리스트링 값으로 업데이트
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
