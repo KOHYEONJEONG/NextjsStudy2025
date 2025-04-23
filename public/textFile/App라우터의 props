@@ -1,0 +1,26 @@
+✅쿼리스트링 꺼내기
+ㄴ props를 출력하면 쿼리스트링이 포함된다.
+
+간단하지?
+
+그중 
+searchpRarams(객체)를 꺼내면 된다.
+
+✅활용 
+1. 타입 정의
+ export default async function Page({
+  searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
+}: {
+  searchParams: Promise<{
+    q?: string;
+  }>;
+}) 
+
+2. 쿼리스트링 꺼내기
+  const { q } = await searchParams;
+
+3. 쿼리스트링 활용
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}` //p는 props의 searchParams
+  );
+

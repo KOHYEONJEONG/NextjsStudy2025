@@ -25,7 +25,7 @@ async function Footer() {
 }
 
 export default function RootLayout({
-  children,
+  children, //구조분해할당으로 받아오기.
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -37,6 +37,14 @@ export default function RootLayout({
           <header>
             <Link href={"/"}>📚 ONEBITE BOOKS</Link>
           </header>
+
+          {/* 
+                props에서 구조분해할당으로 전달 받은 다음...
+
+                children 키워드를 통해 자동으로 Page 컴포넌트 전달되기 때문에 
+                레이아웃 컴포넌트의 리턴문 안에 
+                이런식으로 페이지 컴포넌트를 어디에 배칠할 건지 직접 설정해주면 된다. 
+            */}
           <main>{children}</main>
           <Footer />
         </div>

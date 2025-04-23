@@ -1,3 +1,4 @@
+
 데이터 캐시(Data Cache)
 🚨목적 : 백엔드 서버로부터 불러온 데이터를 거의 영구적으로 보관하기 위해서 존재.
 - 서버 가동중에는 영구적으로 보관한다.
@@ -6,45 +7,46 @@
 - 영구적으로 데이터를 보관하거나, 특정 시간을 주기로 갱신 시키는 것도 가능
 
 옵션도 있음.
-ㄴ 일반적인 fetch 메서드가 아닌 Nextj가 자체적으로 데이터 캐시와 관련된 여러 개의 기능들을 덧붙여 놓은 일종의 확장판 개념의 메서드이다.
+ㄴ 일반적인 fetch 메서드가 아닌 Nextjs가 자체적으로 
+데이터 캐시와 관련된 여러 개의 기능들을 덧붙여 놓은 
+일종의 확장판 개념의 메서드이다.
 
-1. {cache: "no-store",} 
+1️⃣. {cache: "no-store",} 
 - 🚨기본값
 - 데이터 패칭의 결과를 저장하지 않는 옵션
 - 캐싱을 아예 하지 않도록 설정하는 옵션
 - 인덱스 페이지에 접근할때마다 새로 불러옴(캐싱 안하겠다.)
 
-⏬로그
- GET http://localhost:12345/book 200 in 469ms (cache skip)
- │ │ Cache skipped reason: (cache: no-store) <-- 괄호보면 자동으로 캐싱되지 않았다!라는 뜻
+	🍒로그
+	 GET http://localhost:12345/book 200 in 469ms (cache skip)
+	 │ │ Cache skipped reason: (cache: no-store) <-- 괄호보면 자동으로 캐싱되지 않았다!라는 뜻
 
-2. {cache:"force-cache"}
+2️⃣. {cache:"force-cache"}
 - 요청의 결과를 무조건 캐싱함
 - 한번 호출 된 이후에는 다시는 호출되지 않음
 
-⏬로그
-│ GET http://localhost:12345/book 200 in 6ms (cache hit)
+	🍒로그
+	│ GET http://localhost:12345/book 200 in 6ms (cache hit)
 
-
-
-3. {next: {revalidate : 3}}
+3️⃣. {next: {revalidate : 3}}
 - 특정 시간을 주기로 캐시를 업데이트 함
 - 마치 Page Router의 ISR 방식과 유사함.
 
+(설명)
 3초 주기로 next 서버가 업데이트 함.
 데이터 캐시를 가지고 이용하다가
 3초가 지난 이후라면 요청이 들어왔을때는 캐시된 데이터를 일단 응답하고 => 상한 데이터를 그대로 두지 않고 최신 데이터로 (최신화)빠르게 페이지를 생성해 다시 반환한다.
 
-4. {next: {tags : ['a']}}
+4️⃣. {next: {tags : ['a']}}
 - On-Demand revalidate
 - 요청이 들어왔을 때 데이터를 최신화 함.
 특정 페이지나 데이터를 수동으로 재검증(revalidate)할 수 있게 해주는 기능
 
---------------------
+------설정--------
 +
 next.config.mjs에서 로그 찍기 허용 추가
-  logging: {
-    fetches: {
-      fullUrl: true,
-    },
-  },
+	logging: {
+			fetches: {
+				fullUrl: true,
+			},
+	},
