@@ -5,7 +5,6 @@ import { useRouter, useSearchParams } from "next/navigation"; //App 라우터를
 import style from "./serachbar.module.css";
 
 export default function Searchbar() {
-  console.log("Searchbar 렌더링");
   //사용자 입력이 필요한 상호작용(입력이나 이벤트)이 필요한 컴포넌트.
   const router = useRouter();
   const searchParams = useSearchParams(); //nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
@@ -24,7 +23,6 @@ export default function Searchbar() {
      * NaN
     false
  */
-    
   }, [q]); //쿼리스트링 q의 값이 변할 때마다 setSearch 함수를 호출해서 SearchState의 값을 현재의 쿼리스트링 값으로 업데이트
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +30,7 @@ export default function Searchbar() {
   };
 
   const onSubmit = () => {
-    if (!search || q === search) return; //검색어가 변경되지 않았으면 추가적인 검색 작업이 불필요하여 예외처리
+    if (!search || q === search) return; //검색어가 변경되지 않았으면 추가적인 검색 작업이 '불필요'하여 예외처리
 
     // \search\page.tsx 실행
     router.push(`/search?q=${search}`);

@@ -6,6 +6,28 @@ App 라우터
 2.JS Bundle : 이동할 페이지에 필요한 컴포넌트 (브라우저 <- 서버)
 ㄴ 자바스크립트 번들(클라이언트 컴포넌트만 포함) 파일만 전달하는게 아닌, 그것과 함께 서버 컴퍼런트의 실행한 결과물인 RSC Payload도 함께 전달을 해주게된다.
 
+# 쿼리스트링을 불러오는 방식 다름
+1. 클라이언트 컴포넌트
+import { useRouter, useSearchParams } from "next/navigation"; 
+const searchParams = useSearchParams(); //nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
+
+const q = searchParams.get("q");
+
+  useEffect(() => {
+    setSearch(q || ""); //q가 falsy 값(거짓으로 평가되는 값)이면 ""(빈 문자열)을 반환
+  }, [q]);
+
+2. 서버 컴포넌트
+
+export default async function Page({
+  searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
+}: {
+  searchParams: Promise<{
+    q?: string;
+  }>;
+}) {
+  const { q } = await searchParams;
+
 -------------
 
 가장 중요한 부분

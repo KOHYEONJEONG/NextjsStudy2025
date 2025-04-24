@@ -57,7 +57,7 @@ https://react.dev/link/hydration-mismatch
     at RootLayout (rsc://React/Server/webpack-internal:///(rsc)/./src/app/layout.tsx?8:20:94)
 
 
-    3.Next.js App Router 환경에서 서버 컴포넌트에 정의된 함수를 클라이언트 컴포넌트로 직접 넘기려 했을 때 발생하는 전형적인 문제
+  3.Next.js App Router 환경에서 서버 컴포넌트에 정의된 함수를 클라이언트 컴포넌트로 직접 넘기려 했을 때 발생하는 전형적인 문제
     Unhandled Runtime Error
 
     Error: Functions cannot be passed directly to Client Components unless you explicitly 
