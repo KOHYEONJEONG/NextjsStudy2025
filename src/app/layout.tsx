@@ -1,6 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
-import style from "./layout.module.css";
+import style from "./layout.module.css"; //루트 layout에 css파일
 import { BookData } from "@/types";
 
 async function Footer() {

@@ -16,7 +16,8 @@ async function AllBook() {
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
   }
-  const allBook: BookData[] = await response.json(); //타입 지정(BookData의 array 타입)
+  //기본 타입 : any
+  const allBook: BookData[] = await response.json(); //명시적으로 타입 지정해주자(BookData의 array 타입)
 
   return (
     <div>
@@ -55,7 +56,6 @@ async function RecoBooks() {
 export default function Home() {
   //async 제외
   // 인덱스 페이지
-
   return (
     <div className={style.container}>
       {/* section 태그는 div 태그와 이름만 다른뿐 기능은 같다 */}
