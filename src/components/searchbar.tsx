@@ -8,7 +8,7 @@ export default function Searchbar() {
   console.log("Searchbar 렌더링");
   //사용자 입력이 필요한 상호작용(입력이나 이벤트)이 필요한 컴포넌트.
   const router = useRouter();
-  const searchParams = useSearchParams(); //nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
+  const searchParams = useSearchParams(); //비동기함수, nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
   const [search, setSearch] = useState("");
 
   const q = searchParams.get("q");
@@ -24,7 +24,6 @@ export default function Searchbar() {
      * NaN
     false
  */
-    
   }, [q]); //쿼리스트링 q의 값이 변할 때마다 setSearch 함수를 호출해서 SearchState의 값을 현재의 쿼리스트링 값으로 업데이트
 
   const onChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {

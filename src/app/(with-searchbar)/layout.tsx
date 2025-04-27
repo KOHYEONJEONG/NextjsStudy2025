@@ -11,7 +11,12 @@ export default function Layout({ children }: { children: ReactNode }) {
 
           Searchbar 컴포넌트만 클라이언트 컴포넌트로 만들면됨
       */}
-      <Searchbar />
+      <Suspense fallback={<div>Loading ...</div>}>
+        {/*
+        Suspense 컴포넌트란?
+        사전렌더링 과정에서 클라이언트 컴포넌트는 배제되고 오직 클라이언트 측에서만 렌더링된다. */}
+        <Searchbar />
+      </Suspense>
 
       {/* 
           props에서 구조분해할당으로 전달 받은 다음...
