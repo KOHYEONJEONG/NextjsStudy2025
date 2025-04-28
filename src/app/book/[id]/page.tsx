@@ -12,7 +12,6 @@ const mockData = {
     "https://shopping-phinf.pstatic.net/main_3888828/38888282618.20230913071643.jpg",
 };
 
-
 // book\[id]
 // 한개의 url 파라미터만 허용한다.(ex) book\1\2 은 안된다!)
 // http://localhost:3000/book/1
@@ -25,7 +24,7 @@ const mockData = {
 export default async function Page({
   params,
 }: {
-  params: { id: string | string[] };
+  params: Promise<{ id: string | string[] }>;
 }) {
   const response = await fetch(
     // `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${(await params).id}`
