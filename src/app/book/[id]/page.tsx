@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import style from "./page.module.css";
 
 const mockData = {
@@ -21,6 +22,26 @@ const mockData = {
 // 단 url 파라미터가 한개도 없으면 404 에러
 // *[[...id]] 이렇게 사용하면 없어도 에러 안남
 
+
+export const dynamicParams = false;//generateStaticParams로 내보내진 url 파라미터가 1,2,3 이외에는 존재하지 말아야할 때
+
+/*
+  generateStaticParams 함수
+  - 정적으로 빌드 타임에 어떠한 url 파라미터가 존재할 수 있는지
+*/
+export function generateStaticParams() {
+  //정적 페이지로 변경하기 위해서 사용, 속도 향상 
+  // (이 외 페이지는 입력 안해도 원래는 동적페이지니까 실시간으로 검색되서 잘 나옴.
+  // (이때 해당페이지도 풀라우트 캐시로써 잘 저장이 되고있다!!!! - 해당 페이지 다시 접속해도 빠르게 저장된 페이지를 보여준다.))
+    // ㄴㄴ http://localhost:3000/book/10 
+    // ㄴㄴㄴ불러온 해당 페이지를 다시 새로고침해보면 ex 65ms -> 9ms 밖에 안걸린다.(만약 없는 데이터면 )
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+  ];
+}
+
 export default async function Page({
   params,
 }: {
@@ -32,6 +53,10 @@ export default async function Page({
   );
   //예외처리 필수
   if (!response.ok) {
+    //사실상 보기에는 안 좋음. 404 페이지를 보여주는게 좋음.
+    if(response.status === 404){
+      notFound()
+    }
     return <div>오류가 발생했습니다...</div>;
   }
 

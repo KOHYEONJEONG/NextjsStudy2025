@@ -9,7 +9,7 @@ async function AllBook() {
   //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정보를 지정해줘야한다.
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
-    { cache: "no-store" }
+    { cache: "force-cache" }
   );
 
   //예외처리 필수
@@ -32,7 +32,8 @@ async function AllBook() {
 async function RecoBooks() {
   //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정보를 지정해줘야한다.
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`,
+    { next: { revalidate: 3} }
   );
   //예외처리 필수
   if (!response.ok) {

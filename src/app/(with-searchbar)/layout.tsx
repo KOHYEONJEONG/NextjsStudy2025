@@ -13,8 +13,11 @@ export default function Layout({ children }: { children: ReactNode }) {
       */}
       <Suspense fallback={<div>Loading ...</div>}>
         {/*
-        Suspense 컴포넌트란?
-        사전렌더링 과정에서 클라이언트 컴포넌트는 배제되고 오직 클라이언트 측에서만 렌더링된다. */}
+        Suspense 컴포넌트란?(서스펜스, 리액트 내장컴포넌트)
+        사전렌더링 과정에서 클라이언트 컴포넌트는 배제되고 오직 클라이언트 측에서만 렌더링된다. 
+        ㄴ Searchbar 컴포넌트 안에서 useSearchParams 훅이 이쓴ㄴ데 빌드타임에 불러오는 문제를 막아서 build 시 오류가 안남.
+
+        */}
         <Searchbar />
       </Suspense>
 
