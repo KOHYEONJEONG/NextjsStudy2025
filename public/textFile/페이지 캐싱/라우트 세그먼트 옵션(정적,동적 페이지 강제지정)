@@ -1,0 +1,42 @@
+#라우트 세그먼트 옵션(뜻 : 페이지 설정을 강제로 조정하는 기능)
+특정 페이지에 캐싱이나 리벨리데이트 등의 동작을 우리가 직접 강제로 그렇게 동작하도록 설정
+
+옵션1.
+형식 : export const dynamicParams = false;
+ㄴ 위치: \src\app\book\[id]\page.tsx
+ㄴ generateStaticParams 미리 선언하지 않은 페이지는 404 페이지로 리다이렉션된다.
+
+
+옵션2. 막무가내로 강제로 해당하는 페이지를 스태틱(정적) 또는 다이나믹(동적) 설정
+형식 : export const dynamic = "force-static";
+ㄴ 위치 : \src\app\(with-searchbar)\search\page.tsx
+1. auto          : 기본값, 강제x(동적함수나 , 캐싱되지 않은 데이터 패칭을 사용한다면 동적 페이지로, 그렇지 않다면 정적페이지로 인식 늘 그랬던것 처럼~)
+2. force-dynamic : 페이지를 강제로 dynamic 페이지로 설정(이유를 막론하고 동적페이지로 설정된다.)
+3. force-static  : 페이지를 강제로 static 페이지로 설정(유의할 점 : 동적함수를 포함한 page인경우 기능이 제대로 작동 안한다)
+4. error         : 현재 페이지를 정적 페이지로 변경하지만 동적 페이지로 의심되는 경우 오류를 출력한다.(빌드 시 오류 출력됨)
+
+🚨되도록이면 이런 옵션을 사용하지 않는걸 권장한다.
+
+-------------------------------------------------
+export const dynamic = "force-static"; 
+사용 후 npm run build 시 아래 출력 결과
+ㄴ (서치가 제대로 동작하지 않을걸 알 수 있다.)  
+ㄴ 동적함수에 빈값이 들어가기 때문이다.
+
+✅ f라고 붙으면 동적 페이지
+✅ ○ 라고 붙으면 정적 페이지(_not-found 페이지만 정적 페이지)
+
+
+
+Route (app)                                 Size  First Load JS  Revalidate  Expire
+┌ ○ /                                      301 B         105 kB          3s      1y
+├ ○ /_not-found                            139 B         101 kB
+├ ● /book/[id]                             296 B         101 kB
+├   ├ /book/1
+├   ├ /book/2
+├   └ /book/3
+└ ○ /search  🔥🔥 정적페이지로 바뀜!                            278 B         105 kB
++ First Load JS shared by all             101 kB
+  ├ chunks/4bd1b696-52a6696c08e3276c.js  53.2 kB
+  ├ chunks/684-a90f75b76908eb92.js       45.9 kB
+  └ other shared chunks (total)          2.01 kB

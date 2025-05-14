@@ -2,6 +2,13 @@ import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
 
+// 라우트 세그먼트 옵션
+// 1. auto          : 기본값, 강제x(동적함수나 , 캐싱되지 않은 데이터 패칭을 사용한다면 동적 페이지로, 그렇지 않다면 정적페이지로 인식 늘 그랬던것 처럼~)
+// 2. force-dynamic : 페이지를 강제로 dynamic 페이지로 설정(이유를 막론하고 동적페이지로 설정된다.)
+// 3. force-static  : 페이지를 강제로 static 페이지로 설정(유의할 점 : 동적함수를 포함한 page인경우 기능이 제대로 작동 안한다)
+// 4. error         : 현재 페이지를 정적 페이지로 변경하지만 동적 페이지로 의심되는 경우 오류를 출력한다.(빌드 시 오류 출력됨)
+// export const dynamic = "force-static"; //강제 변경이라 사용을 추천하지 않는다.
+
 /**
  * async 키워드
  * ㄴ 리액트의 서버 컴포넌트이기 때문에 비동기적으로 실행되어도 문제가 없다.
@@ -27,7 +34,6 @@ export default async function Page({
   if (!response.ok) {
     return <div>오류가 발생했습니다...</div>;
   }
-
 
   const books: BookData[] = await response.json(); //타입 : BookData[]
 
