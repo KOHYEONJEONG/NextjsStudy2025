@@ -7,7 +7,7 @@ import style from "./serachbar.module.css";
 export default function Searchbar() {
   //사용자 입력이 필요한 상호작용(입력이나 이벤트)이 필요한 컴포넌트.
   const router = useRouter();
-  const searchParams = useSearchParams(); //비동기함수, nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
+  const searchParams = useSearchParams(); //동적함수사용, 비동기함수, nextjs가 제공하는 hook, 쿼리스트링을 빼올 수 있음.
   const [search, setSearch] = useState("");
 
   const q = searchParams.get("q");

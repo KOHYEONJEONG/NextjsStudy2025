@@ -25,6 +25,7 @@ export default async function Page({
 
   //어쩔 수 없이 검색을 위해서 동적함수를 사용했기에 동적페이지가 되지만.
   //최대한 한번 호출된 검색어 데이터를 활용하기 위해서 force-cache 옵션을 사용하자.
+  //ㄴ (최적화)검색 결과는 계속해서 캐싱이 이루어질 거기 때문에 한 번 검색이 된 데이터를 캐시해두자. <- 빠르게 응답 가능   { cache: "force-cache" }
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/search?q=${q}`, //p는 props의 searchParams
     { cache: "force-cache" }

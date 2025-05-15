@@ -46,7 +46,7 @@ async function Comp() {
 즉각적으로 응답이 되어서 굉장히 빠른 속도로 페이지를 제공하는데 도움을 준다.
 
 
-
+--------------------------
 npm run build 시 아래 출력 결과
 ✅ f라고 붙으면 동적 페이지
 ✅ ○ 라고 붙으면 정적 페이지(_not-found 페이지만 정적 페이지)
@@ -66,7 +66,8 @@ Route (app)                                 Size  First Load JS
 ƒ  (Dynamic)  server-rendered on demand
 
 
-정적페이지로 변경해볼까?
+✅정적페이지로 변경해볼까?
+🔥먼저 src\app\layout.tsx(RootLayout)과 src/app/(with-searchbar)/layout.tsx 그룹핑 폴더에 Layout 살펴보고 수정하자.
 -> / (인덱스 페이지)도 정적페이지로 변경된걸 볼 수 있다.
 (no-store 옵션이 꼭 필요하지 않으면 force-cache 옵션을 사용하여 정적페이지로 변경하였다.)
 

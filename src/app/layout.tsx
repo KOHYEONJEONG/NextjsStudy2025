@@ -4,8 +4,9 @@ import style from "./layout.module.css"; //루트 layout에 css파일
 import { BookData } from "@/types";
 
 async function Footer() {
-
   //옵션이 없고(또는 no-store) 데이터 캐싱되지 않는다.
+  //왜? 해당 레이아웃은 메인 layout이며 이 Footer 컴포넌트때문에 동적 컴포넌트로 인식되기 때문이다
+  // 그렇기 때문에 자주 변화하지 않는 Footer는 캐시 옵션을 사용하여 RootLayout을 정적 컴포넌트로 인식되게 함으로써 다른 컴포넌트에도 영향이 가지 않는다(npm run build 해보자. )
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
     { cache: "force-cache" }

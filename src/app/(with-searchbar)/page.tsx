@@ -9,7 +9,7 @@ async function AllBook() {
   //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정보를 지정해줘야한다.
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`,
-    { cache: "force-cache" }
+    { cache: "force-cache" } //캐시 옵션은 사용하여 정적 페이지로 만듬(왠만하면 정적 페이지로 두고 싶기때문에 영향이 갈만한 코드 살펴보는중이다.)
   );
 
   //예외처리 필수
@@ -30,10 +30,10 @@ async function AllBook() {
 
 // 랜덤으로 추천도서 가져옴
 async function RecoBooks() {
-  //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정보를 지정해줘야한다.
+  //api로 데이터를 불러오면 타입스크립트는 어떤 결과값을 가져올지 몰라 타입정A보를 지정해줘야한다.
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`,
-    { next: { revalidate: 3} }
+    { next: { revalidate: 3 } } // revalidate 옵션은 페이지를 동적으로 설정하지 않기에 그대로 둬도 무방하다.(왠만하면 정적 페이지로 두고 싶기때문에 영향이 갈만한 코드 살펴보는중이다.)
   );
   //예외처리 필수
   if (!response.ok) {
