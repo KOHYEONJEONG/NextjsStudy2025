@@ -6,6 +6,13 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div>
+      <div>
+        클라이언트 라우터 캐시가 작동되는지 확인하기 위해 시분초를 확인해보자
+        검색어를 입력해도 시간이 변화되지 않는걸 알 수 있다!(넥스트 서버 자동
+        작동)
+        {new Date().toLocaleString()}
+      </div>
+
       {/* 인덱스 페이지와 search 페이지의 공통적으로 SeachBar가 상단에 생긴다.
           ㄴ 상세보기 화면에서는 SeachBar가 안 보이겠지?
 
