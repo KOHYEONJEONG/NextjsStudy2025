@@ -40,3 +40,8 @@ Route (app)                                 Size  First Load JS  Revalidate  Exp
   ├ chunks/4bd1b696-52a6696c08e3276c.js  53.2 kB
   ├ chunks/684-a90f75b76908eb92.js       45.9 kB
   └ other shared chunks (total)          2.01 kB
+
+  ------------------------------------------------
+
+  Q. 라우트 세그먼트 옵션 중 'export const dynamic = false-static' 설정 시 페이지에 설정했을 때 발생할 수 있는 예상치 못한 동작은 무엇인가?
+  - 페이지가 무조건 정적으로 동작하게 되므로 'headers'와 같은 동적 함수의 결과가 비어있거나 'undefined'가 될 수 있다.
