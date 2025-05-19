@@ -2,6 +2,9 @@ import BookItem from "@/components/book-item";
 import style from "./page.module.css";
 import books from "@/mock/books.json";
 import { BookData } from "@/types";
+import { Metadata } from "next";
+import { time } from "console";
+import { title } from "process";
 /**
  * 메인화면(인덱스) 페이지
  */
@@ -53,6 +56,17 @@ async function RecoBooks() {
     </div>
   );
 }
+
+//메타 데이터(Metadata 임폴트 해주자)
+export const metadata: Metadata = {
+  title: "한입 북스",
+  description: "합입 북스에 등록된 도서를 만나보세요.",
+  openGraph: {
+    title: "한입 북스",
+    description: "합입 북스에 등록된 도서를 만나보세요.",
+    images: ["/thumbnail.png"], // '/'뒤에 파일명을 적어주면 public 폴더를 가르킨다.
+  },
+};
 
 export default function Home() {
   //async 제외

@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import style from "./page.module.css";
+import { Metadata } from "next";
 
 const mockData = {
   id: 1,
@@ -23,7 +24,7 @@ const mockData = {
 // *[[...id]] 이렇게 사용하면 없어도 에러 안남
 
 //⏬generateStaticParams로 내보내진 url 파라미터가 [{ id: "1" }, { id: "2" }, { id: "3" }]; 이외에는 존재하지 말아야할 때 404페이지로 보내고 싶다면? 아래 한줄 적기
-//export const dynamicParams = false;//🔥넥스트 서버가 자동으로 이 페이지를 생성할 때 dynamicParams 변수의 값을 내보내진 값을 확인하여 넥스트는 이 페이지의 파라미터는 다이나믹하면 안되구나 생각한다.
+//export const dynamicParams = false;//🔥넥스트 서버가 자동으로 이 페이지를 생성할 때 dynamicParams 변수의 값을 내보내진 값을 확인하여 넥스트는 이 페이지의 '파라미터'는 다이나믹하면 안되구나 생각한다.
 //                            기본값이 true이고, true면 작성 안하면 됨.
 
 /*
@@ -45,6 +46,21 @@ export function generateStaticParams() {
   return [{ id: "1" }, { id: "2" }, { id: "3" }];
   // 주의할 점: 위에처럼 URL 파라미터의 값을 명시할 때에는 문자열로만, 문자열 데이터로만 명시해야 한다.
   // 🔥이제 해당 페이지 컴포넌트는 스태틱 페이지이다. 밑에 동적함수(fetch 및 캐시 사용 안한 함수)사용했지만 강제로 스태틱 페이지로 설정된다.
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string | string[] }>;
+}) {
+  const { id } = await params;
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/${id}`,
+    { cache: "force-cache" }
+  );
+  return {
+    //
+  };
 }
 
 export default async function Page({

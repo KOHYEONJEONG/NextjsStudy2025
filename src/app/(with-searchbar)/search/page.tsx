@@ -1,6 +1,8 @@
 import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
 import { BookData } from "@/types";
+import { title } from "process";
+import { Metadata } from "next";
 
 // 라우트 세그먼트 옵션
 // 1. auto          : 기본값, 강제x(동적함수나 , 캐싱되지 않은 데이터 패칭을 사용한다면 동적 페이지로, 그렇지 않다면 정적페이지로 인식 늘 그랬던것 처럼~)
@@ -9,6 +11,28 @@ import { BookData } from "@/types";
 // 4. error         : 현재 페이지를 정적 페이지로 변경하지만 동적 페이지로 의심되는 경우 오류를 출력한다.(빌드 시 오류 출력됨)
 // export const dynamic = "force-static"; //강제 변경이라 사용을 추천하지 않는다.
 
+//동적인 메타 태그 설정 해야한다면 generateMetadata 함수 사용
+export async function generateMetadata({
+  searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
+}: {
+  searchParams: Promise<{
+    //promis 객체 안에
+    q?: string; // q라는 쿼리 스트링이 존재할 수도 있고 존재하지 않을수도 있는 값을 불러오기.
+  }>;
+}): Promise<Metadata> {
+  //반환 타입 : :Promise<Metadata>
+  const { q } = await searchParams;
+  //현재 페이지 메타 데이터를 동적으로 생성하는 역할을한다.
+  return {
+    title: `${q} : 한입북스 검색`,
+    description: `${q}의 검색 결과입니다`,
+    openGraph: {
+      title: `${q} : 한입북스 검색`,
+      description: `${q}의 검색 결과입니다`,
+      images: ["/thumbnail.png"],
+    },
+  };
+}
 /**
  * async 키워드
  * ㄴ 리액트의 서버 컴포넌트이기 때문에 비동기적으로 실행되어도 문제가 없다.
@@ -18,7 +42,7 @@ export default async function Page({
   searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
 }: {
   searchParams: Promise<{
-    q?: string;
+    q?: string; // q라는 쿼리 스트링이 존재할 수도 있고 존재하지 않을수도 있는 값을 불러오기.
   }>;
 }) {
   const { q } = await searchParams;
