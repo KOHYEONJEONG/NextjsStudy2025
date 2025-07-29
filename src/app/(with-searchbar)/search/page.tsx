@@ -15,6 +15,7 @@ import { Metadata } from "next";
 export async function generateMetadata({
   searchParams, //매개변수 구조분해, 전달된 props중 searchParams만 꺼냄.
 }: {
+  //형태 => searchParams 변수 : 타입
   searchParams: Promise<{
     //promis 객체 안에
     q?: string; // q라는 쿼리 스트링이 존재할 수도 있고 존재하지 않을수도 있는 값을 불러오기.

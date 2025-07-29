@@ -1,0 +1,12 @@
+# 타입스크립트
+
+export default async function Page({
+  params, // 구조분해할당
+}: {
+  //구조분해할당 변수명 : 타입 지정
+  params: Promise<{ id: string | string[] }>;
+}) {
+    const {id} = await prams;
+    ...
+
+ }
