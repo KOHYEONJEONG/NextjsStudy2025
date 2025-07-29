@@ -15,7 +15,7 @@ async function Footer() {
     return <footer>제작 @winterlood</footer>;
   }
 
-  //요청성공
+  //요청 성공
   const book: BookData[] = await response.json(); //json으로 변환
 
   const bookCount = book.length;

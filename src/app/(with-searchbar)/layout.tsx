@@ -7,9 +7,9 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div>
       <div>
-        클라이언트 라우터 캐시가 작동되는지 확인하기 위해 시분초를 확인해보자
-        검색어를 입력해도 시간이 변화되지 않는걸 알 수 있다!(넥스트 서버 자동
-        작동)
+//         클라이언트 라우터 캐시가 작동되는지 확인하기 위해 시분초를 확인해보자
+//         검색어를 입력해도 시간이 변화되지 않는걸 알 수 있다!(넥스트 서버 자동
+//         작동)
         {new Date().toLocaleString()}
       </div>
 
