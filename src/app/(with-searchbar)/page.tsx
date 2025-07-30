@@ -69,8 +69,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  //async 제외
-  // 인덱스 페이지
+    console.log("Home 컴포넌트::서버 컴포넌트")
+//   async 제외
+//   인덱스 페이지
   return (
     <div className={style.container}>
       {/* section 태그는 div 태그와 이름만 다른뿐 기능은 같다 */}

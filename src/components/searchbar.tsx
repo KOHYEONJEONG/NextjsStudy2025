@@ -1,4 +1,4 @@
-"use client"; //클라이언트 컴포넌트
+"use client"; //클라이언트 컴포넌트(이제 이 컴포넌트는 브라우저에서 하이드레이션 된다.)
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation"; //App 라우터를 사용하기에 next/navigation로 import해주기
